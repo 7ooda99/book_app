@@ -1,6 +1,7 @@
 import 'package:book_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'features/splash/presentation/views/splash_view.dart';
 
@@ -14,7 +15,10 @@ class BookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: kMainColor),
+      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: kMainColor, 
+      textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+      ),
+      
       debugShowCheckedModeBanner: false,
       home: const SplashView(),
     );
