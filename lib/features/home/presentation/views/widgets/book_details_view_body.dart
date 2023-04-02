@@ -1,7 +1,10 @@
 import 'package:book_app/core/utils/styles.dart';
+import 'package:book_app/core/utils/widgets/custom_button.dart';
+import 'package:book_app/features/home/presentation/views/widgets/booking_rating.dart';
 import 'package:book_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
+import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -26,9 +29,7 @@ class BookDetailsViewBody extends StatelessWidget {
               ),
               Text(
                 'Fortress Blood',
-                style: Styles.textStyle30.copyWith(
-                  fontWeight: FontWeight.bold
-                ),
+                style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 6,
@@ -38,11 +39,19 @@ class BookDetailsViewBody extends StatelessWidget {
                 child: Text(
                   'LD Goffiggan',
                   style: Styles.textStyle18.copyWith(
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.w500
-                  ),
+                      fontStyle: FontStyle.italic, fontWeight: FontWeight.w500),
                 ),
               ),
+              const SizedBox(
+                height: 18,
+              ),
+              const BookRating(
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
+              SizedBox(
+                height: 37,
+              ),
+              const BookAction()
             ],
           ),
         ),
@@ -50,3 +59,4 @@ class BookDetailsViewBody extends StatelessWidget {
     );
   }
 }
+
