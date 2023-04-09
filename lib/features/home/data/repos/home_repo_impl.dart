@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:dartz/dartz.dart';
 
 import 'package:book_app/core/errors/failures.dart';
 import 'package:book_app/core/utils/api_service.dart';
 import 'package:book_app/features/home/data/models/book_model/book_model.dart';
 import 'package:book_app/features/home/data/repos/home_repo.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
@@ -23,7 +26,12 @@ class HomeRepoImpl implements HomeRepo {
       }
       return right(books);
     } catch (e) {
-      return left(ServerFailure());
+      if (e is DioError){
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errMessage: e.toString()));
+      }
+      
     }
     throw UnimplementedError();
   }
